@@ -9,45 +9,56 @@ triesRemaining.textContent = 4;
 const correctNum = Math.floor(Math.random() * (21 - 1)) + 1;
 let tries = 4;
 
-// const compareNumbers = (guess, rightNum) => {
-//     if (guess === rightNum) {
-//         return 0;
-//     } else if (guess > rightNum) {
-//         return 1;
-//     } else {
-//         return -1;
-//     }
-// }
+const errorCheck = (guess) => {
+    if (Number(guess.value) < 1 || Number(guess.value > 20)) {
+        window.alert('Entry must be a number from 1 to 20');
+        return;
+    }
+};
 
-numButt.addEventListener('click', () => {
-    // decrement tries remaining
+const decrementTries = () => {
     tries--;
     triesRemaining.textContent = tries;
-    if (tries === 0 || tries < 0){
+};
+
+const disableButton = () => numButt.setAttribute('disabled', true);
+
+const loseMessage = () => {
         // Display lose message
-        message.textContent = 'YOU LOSE, BETTER LUCK NEXT TIME!';
+    message.textContent = 'YOU LOSE, BETTER LUCK NEXT TIME!';
         // change color
-        message.style.color = 'red';
-        // Disable game play
-        numButt.setAttribute('disabled', true);
+    message.style.color = 'red';
+};
+
+const winMessage = () => {
+    // Display win message
+    message.textContent = 'YOU WIN!!!';
+    // change color
+    message.style.color = 'green';
+}
+
+const tooHigh = () => message.textContent = 'TOO HIGH, GUESS AGAIN';
+
+const tooLow = () => message.textContent = 'TOO LOW, GUESS AGAIN';
+
+numButt.addEventListener('click', () => {
+    errorCheck(guess);
+    // out of tries?
+    if (tries === 0 || tries < 0){
+        loseMessage();
+        disableButton();
     // correct guess?
     } else if (compareNumbers(Number(guess.value), correctNum) === 0) {
-        // Display win message
-        message.textContent = 'YOU WIN!!!';
-        // change color
-        message.style.color = 'green';
-        // disable game play
-
+        winMessage();
+        disableButton();
     // too high?
     } else if (compareNumbers(Number(guess.value), correctNum) === 1){
-        // Display message
-        message.textContent = 'TOO HIGH, GUESS AGAIN';
-        // Decrement tries remaining
+        tooHigh();
+        decrementTries();
     //too low?
     } else {
-        // Display message
-        message.textContent = 'TOO LOW, GUESS AGAIN';
-        // Decrement tries remaining
+        tooLow();
+        decrementTries();
     }
 });
 
