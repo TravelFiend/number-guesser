@@ -35,7 +35,7 @@ const winMessage = () => {
     message.textContent = 'YOU WIN!!!';
     // change color
     message.style.color = 'green';
-}
+};
 
 const tooHigh = () => message.textContent = 'TOO HIGH, GUESS AGAIN';
 
