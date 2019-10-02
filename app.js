@@ -43,6 +43,7 @@ const tooLow = () => message.textContent = 'TOO LOW, GUESS AGAIN';
 
 numButt.addEventListener('click', () => {
     errorCheck(guess);
+    decrementTries();
     // out of tries?
     if (tries === 0 || tries < 0){
         loseMessage();
@@ -54,11 +55,9 @@ numButt.addEventListener('click', () => {
     // too high?
     } else if (compareNumbers(Number(guess.value), correctNum) === 1){
         tooHigh();
-        decrementTries();
     //too low?
     } else {
         tooLow();
-        decrementTries();
     }
 });
 
