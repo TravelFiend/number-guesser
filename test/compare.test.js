@@ -39,3 +39,12 @@ test('should return 1 if random number is greater than 8', function(assert) {
     // Make assertions about what is expected valid result
     assert.equal(result, 1);
 });
+
+test('should throw an error if NaN', function(assert) {
+    const guessedNumber = 'string';
+    const expectedError = 'error';
+
+    const result = compareNumbers(guessedNumber, correctNum);
+
+    assert.throws(result, expectedError);    
+});
