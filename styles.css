@@ -1,0 +1,27 @@
+body {
+    text-align: center;
+    background: radial-gradient(#303030, black);
+    font-family: sans-serif;
+    font-size: 25px;
+    color: white;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 100px;
+    letter-spacing: 20px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px white;
+    color: black;
+}
+
+h2 {
+    font-family: cursive;
+    font-size: 40px;
+    margin-bottom: 70px;
+    text-shadow: 6px 6px 20px black;
+}
+
+p {
+    margin: 70px;
+}
